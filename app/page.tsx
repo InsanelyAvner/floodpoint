@@ -4,6 +4,8 @@ import { useState } from "react";
 import * as signalR from "@microsoft/signalr";
 import { v4 as uuidv4 } from "uuid"; // For generating unique IDs
 import { Input } from "@/components/ui/input";
+import { usePathname } from "next/navigation";
+import Link from "next/link"
 
 type ConnectionInfo = {
   id: number;
@@ -24,6 +26,7 @@ export default function Home() {
   const [numConnections, setNumConnections] = useState<number>(1);
   const [classCode, setClassCode] = useState<string>("");
   const [isConnecting, setIsConnecting] = useState<boolean>(false);
+  const pathname = usePathname();
 
   const generateUniqueUsername = () =>
     `sigma_${uuidv4().slice(0, 8)}`;
@@ -193,6 +196,28 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <nav className="row-start-1 flex gap-4 items-center">
+        <Link
+          href="/"
+          className={`px-4 py-2 rounded-lg transition-colors ${
+            pathname === "/" 
+            ? "bg-foreground text-background" 
+            : "hover:bg-gray-100 dark:hover:bg-gray-800"
+          }`}
+        >
+          Flooder
+        </Link>
+        <Link
+          href="/scanner"
+          className={`px-4 py-2 rounded-lg transition-colors ${
+            pathname === "/scanner"
+            ? "bg-foreground text-background"
+            : "hover:bg-gray-100 dark:hover:bg-gray-800"
+          }`}
+        >
+          Scanner
+        </Link>
+      </nav>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full max-w-md">
         <Image
           className=""
