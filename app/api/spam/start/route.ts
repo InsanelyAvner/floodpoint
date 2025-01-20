@@ -1,4 +1,5 @@
 // app/api/spam/start/route.ts
+
 import { NextResponse } from "next/server";
 import { startScanIfNotRunning } from "@/src/scanner";
 
@@ -15,6 +16,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ started: true, message: "Scan initiated." });
   } catch (error) {
-    return NextResponse.json({ started: false, message: "Failed to start scan." }, { status: 500 });
+    console.error("Error starting scan:", error);
+    return NextResponse.json(
+      { started: false, message: "Failed to start scan." },
+      { status: 500 }
+    );
   }
 }
