@@ -194,8 +194,26 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="row-start-3 text-sm text-center">
-        ClassPoint Scanner - Use responsibly
+      <footer className="row-start-3">
+        Built by{" "}
+        <a
+          href="https://github.com/InsanelyAvner"
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium underline underline-offset-4"
+        >
+          InsanelyAvner
+        </a>
+        . The source code is available on{" "}
+        <a
+          href="https://github.com/InsanelyAvner/floodpoint"
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium underline underline-offset-4"
+        >
+          GitHub
+        </a>
+        .
       </footer>
     </div>
   );
